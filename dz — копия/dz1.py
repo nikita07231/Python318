@@ -1,0 +1,9 @@
+a = 1
+b = 2
+c = a
+print("a=",a)
+print("b=",b)
+a = a + b - a
+b = b + c - b
+print("a=",a)
+print("b=",b)
