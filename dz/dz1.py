@@ -1,16 +1,12 @@
-def avg(fn):
-    def wrap(*args):
-        return fn(*args) / len(args)
+str1 = "Я изучаю Nuthon. Мне нравится Nuthon. Nuthon очень интересный язык программирования"
+str2 = ""
+for i in str1:
+    if i == "N":
+        str2 += "P"
+    else:
+        str2 += i
+print(str2)
 
-    return wrap
-
-
-@avg
-def summa(*args):
-    return sum(args)
-
-
-print(summa(2, 3, 3, 4))
 
 
 
