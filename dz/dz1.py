@@ -1,12 +1,11 @@
-str1 = "Я изучаю Nuthon. Мне нравится Nuthon. Nuthon очень интересный язык программирования"
-str2 = ""
-for i in str1:
-    if i == "N":
-        str2 += "P"
-    else:
-        str2 += i
-print(str2)
-
+st = "Ежевику для ежат принесли два ежа. Ежевику еле-еле ежата возле ели съели"
+st1 = st.split()
+c = 0
+for i in range(len(st1)):
+    if st1[i][0] == "е":
+        c += 1
+print(c)
+print(st1)
 
 
 
