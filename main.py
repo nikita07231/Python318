@@ -2307,12 +2307,12 @@ import re
 # print(re.findall(reg, s))
 
 
-# def valid_login(name):
-#     return re.findall("^[A-Za-z0-9_-]{3,16}$", name)
-#
-#
-# print(valid_login("Python_master"))
-# print(valid_login("Pyt#@!hon"))
+def valid_login(name):
+    return re.findall("^[A-Za-z0-9_-]{3,16}$", name)
+
+
+print(valid_login("Python_master"))
+print(valid_login("Pyt#@!hon"))
 
 # print(re.findall(r"\w+", "12 + й"))
 # print(re.findall(r"\w+", "12 + й", flags=re.ASCII))
