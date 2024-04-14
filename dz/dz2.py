@@ -1,8 +1,6 @@
-import re
-
-
-def pas(a):
-    return re.findall("^[A-Za-z0-9_@-]{3,16}$", a)
-
-
-print(pas(input("Введите пароль")))
+st = [-2, 3, 8, -11, -4, 6]
+n = 0
+for i in st:
+    if i < 0:
+        n += 1
+print(n)
