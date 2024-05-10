@@ -1,26 +1,30 @@
-file = "text2.txt"
+class Person:
+    def __init__(self, name, old):
+        self.__name = name
+        self.__old = old
 
-f = open(file, "w")
-f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;\n")
-f.close()
+    @property
+    def name(self):
+        return self.__name
 
-f = open(file, 'r')
-read_line = f.readlines()
-f.close()
+    @name.setter
+    def name(self, new_name):
+        if isinstance(new_name, str):
+            self.__name = new_name
+        else:
+            print("Имя должно быть строкой")
 
-print(read_line)
-pos1 = int(input("pos1 = "))
-pos2 = int(input("pos2 = "))
-if 0 <= pos1 < len(read_line) and 0 <= pos2 < len(read_line):  # a, b = b, a
-    read_line[pos1], read_line[pos2] = read_line[pos2], read_line[pos1]
-else:
-    print("Такой строки нет")
-print(read_line)
+    @name.deleter
+    def name(self):
+        del self.__name
 
-f = open(file, "w")
-f.writelines(read_line)
-f.close()
 
+p = Person('Irina', 26)
+print(p.__dict__)
+p.name = "Igor"
+p.old = 31
+print(p.name)
+print(p.old)
 
 
 

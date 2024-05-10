@@ -2264,7 +2264,7 @@
 
 # Регулярные выражения
 
-import re
+# import re
 
 # s = "Я ищу совпадения в 2024 году. И я их найду в 2 счёта."
 #
@@ -3122,17 +3122,709 @@ import os.path
 # print(p1.get_count())
 
 
-class Change:
-    @staticmethod
-    def inc(x):
-        return x + 1
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+#
+# print(Change.inc(10), Change.dec(10))
 
-    @staticmethod
-    def dec(x):
-        return x - 1
+
+# class Numbers:
+#     @staticmethod
+#     def max(a, b, c, d):
+#         mx = a
+#         if b > mx:
+#             mx = b
+#         if c > mx:
+#             mx = c
+#         if d > mx:
+#             mx = d
+#         return mx
+#
+#     @staticmethod
+#     def min(*args):
+#         mn = args[0]
+#         for i in args:
+#             if i < mn:
+#                 mn = i
+#         return mn
+#
+#     @staticmethod
+#     def average(*args):
+#         return sum(args) / len(args)
+#
+#     @staticmethod
+#     def factorial(n):
+#         mul = 1
+#         for i in range(1, n + 1):
+#             mul *= i
+#         return mul
+#
+#
+# print("Максимальное число:", Numbers.max(3, 5, 7, 9))
+# print("Минимальное число:", Numbers.min(3, 5, 7, 9))
+# print("Среднее арифметическое:", Numbers.average(3, 5, 7, 9))
+# print("Факториал числа:", Numbers.factorial(5))
 
 
-print(Change.inc(10), Change.dec(10))
+# class Date:
+#     def __init__(self, day=0, month=0, year=0):
+#         self.day = day
+#         self.month = month
+#         self.year = year
+#
+#     def string_to_db(self):
+#         return f"{self.year}-{self.month}-{self.day}"
+#
+#     @classmethod
+#     def from_string(cls, date_as_string):
+#         day, month, year = map(int, date_as_string.split("."))
+#         date = Date(day, month, year)
+#         return date
+#
+#     @staticmethod
+#     def is_date_valid(date_as_string):
+#         if date_as_string.count(".") == 2:
+#             day, month, year = map(int, date_as_string.split("."))
+#             return day <= 31 and month <= 12 and year <= 3999
+#
+#
+# dates = [
+#     "23.10.2024",
+#     "21/12/2023",
+#     "01.01.2022",
+#     "12.31.2021"
+# ]
+#
+# for i in dates:
+#     if Date.is_date_valid(i):
+#         date = Date.from_string(i)
+#         print(date.string_to_db())
+#     else:
+#         print(f"Неправильная дата или  формат строки с датой")
+# date1 = Date.from_string("23.10.2024")
+# print(date1.string_to_db())
+# date2 = Date.from_string("21.12.2013")
+# print(date2.string_to_db())
+# string_date = "23.10.2024"
+# print(date.string_to_db())
+
+
+# class Account:
+#     rate_usd = 0.013
+#     rate_eur = 0.011
+#     suffix = 'RUB'
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, surname, num, percent, value):
+#         self.surname = surname
+#         self.num = num
+#         self.percent = percent
+#         self.value = value
+#         print(f"Счет №{self.num} принадлежащий {self.surname} был открыт")
+#         print("*" * 50)
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.value, Account.rate_usd)
+#         print(f"Состояние счета: {usd_val} {Account.suffix_usd}")
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self.value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print("Информация о счете:")
+#         print(f"#{self.num}")
+#         print(f"Владелец: {self.surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.percent:.0%}")
+#         print("-" * 20)
+#
+#
+# acc = Account("Долгих", "12345", 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# import re
+#
+#
+# class UserData:
+#     def __init__(self, fio, old, ps, weight):
+#         self.verify_fio(fio)
+#         self.verify_old(old)
+#         self.verify_weight(weight)
+#         self.__fio = fio
+#         self.__old = old
+#         self.__password = ps
+#         self.__weight = weight
+#
+#     @staticmethod
+#     def verify_fio(fio):
+#         if not isinstance(fio, str):
+#             raise TypeError("ФИО должно быть строкой")
+#         f = fio.split()
+#         if len(f) != 3:
+#             raise TypeError("Неверный формат ФИО")
+#         letters = "".join(re.findall("[a-zа-яё-]", fio, re.IGNORECASE))
+#         # print(letters)
+#         for s in f:
+#             if len(s.strip(letters)) != 0:
+#                 raise TypeError("В ФИО можно использовать только буквы и дефис")
+#
+#     @staticmethod
+#     def verify_old(old):
+#         if not isinstance(old, int) or old < 14 or old > 120:
+#             raise TypeError("Возраст должен быть числом в диапазоне от 14 до 120 лет")
+#
+#     @staticmethod
+#     def verify_weight(w):
+#         if not isinstance(w, float):
+#             raise TypeError("Вес должен быть вещественным числом")
+#
+#
+# p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
+
+
+# Наследование
+
+# class Point(object):
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.y__ = y
+#
+#
+# print(issubclass(Point, object))
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#
+# class Line(Prop):
+#
+#     def draw_line(self) -> None:
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color} {self._width}")
+#
+#
+# class Rect:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def draw_rect(self) -> None:
+#         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color} {self._width}")
+#
+#
+# line = Line(Point(1, 2), Point(10, 20))
+# line.draw_line()
+# rect = Rect(Point(30, 40), Point(70, 80))
+# rect.draw_rect()
+
+
+# class Figure:
+#     def __init__(self, color):
+#         self.__color = color
+#
+#     @property
+#     def color(self):
+#         return self.__color
+#
+#     @color.setter
+#     def color(self, c):
+#         self.__color = c
+#
+#
+# class Rectangle(Figure):
+#     def __init__(self, width, height, color):
+#         self.__width = width
+#         self.__height = height
+#         super().__init__(color)
+#
+#     def area(self):
+#         print(f"Прямоугольник {self.color}. Площадь: ", end="")
+#         return self.__width * self.__height
+#
+#
+# rect = Rectangle(10, 20, "green")
+# print(rect.area())
+
+
+# class Employee:
+#     def __init__(self):
+#         self.name = "Employee"
+#         self.intern = self.Intern()
+#         self.head = self.Head()
+#
+#     def show(self):
+#         print("Name:", self.name)
+#
+#     class Intern:
+#         def __init__(self):
+#             self.name = "Smith"
+#             self.id = "657"
+#
+#         def show(self):
+#             print("Name:", self.name)
+#             print("Id:", self.id)
+#             print("*" * 20)
+#
+#     class Head:
+#         def __init__(self):
+#             self.name = "Boss"
+#             self.id = "789"
+#
+#         def show(self):
+#             print("Name:", self.name)
+#             print("Id:", self.id)
+#             print("*" * 20)
+#
+#
+# outer = Employee()
+# outer.show()
+#
+# d1 = outer.intern
+# d2 = outer.head
+#
+# d1.show()
+# d2.show()
+
+# class Computer:
+#     def __init__(self):
+#         self.name = "PC001"
+#         self.os = self.OS()
+#         self.cpu = self.CPU()
+#
+#     class OS:
+#         def system(self):
+#             return "Windows"
+#
+#     class CPU:
+#         def make(self):
+#             return "Intel"
+#
+#         def model(self):
+#             return "Core-i7"
+#
+#
+# comp = Computer()
+# my_os = comp.os
+# my_cpu = comp.cpu
+# print(comp.name)
+# print(my_os.system())
+# print(my_cpu.make())
+# print(my_cpu.model())
+
+
+# class Cat:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __repr__(self):
+#         return f"{self.__class__}: {self.name}"
+#
+#     def __str__(self):
+#         return f"{self.name}"
+#
+#
+# cat = [Cat("Пушок")]
+# print(cat)
+
+
+# class Point:
+#     def __init__(self, *args):
+#         self.__coord = args
+#
+#     def __len__(self):
+#         return len(self.__coord)
+#
+#
+# p = Point(5, 7)
+# print(len(p))
+# p1 = Point(4, 6, 8)
+# print(len(p1))
+
+
+# class Point:
+#     __slots__ = ("x", "y")
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point(10, 20)
+# print(p1.x, p1.y)
+# p1.z = 30
+# print(p1.z)
+
+
+# class Point:
+#     __slots__ = ("x", "y")
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point2D:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point(10, 20)
+# p2 = Point2D(10, 20)
+# print("pt1 =", p1.__sizeof__())
+# print("pt2 =", p2.__sizeof__())
+
+
+# class Point:
+#     __slots__ = ("x", "y")
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point3D(Point):
+#     pass
+#
+#
+# pt = Point(1, 2)
+# pt3 = Point(10, 20)
+
+
+# Множественное наследование
+
+
+# class Creature:
+#     def __init__(self, name):
+#         self.name = name
+#
+#
+# class Animal(Creature):
+#     def sleep(self):
+#         print(self.name + " is slipping")
+#
+#
+# class Pet(Creature):
+#     def play(self):
+#         print(self.name + " is playing")
+#
+#
+# class Dog(Animal, Pet):
+#     def bark(self):
+#         print(self.name + " is barking")
+#
+#
+# dog = Dog("Buddy")
+# dog.bark()
+# dog.sleep()
+# dog.play()
+
+
+# class A:
+#     def __init__(self):
+#         print("Инициализатор класса А")
+#
+#
+# class B(A):
+#     def __init__(self):
+#         print("Инициализатор класса B")
+#
+#
+# class C(A):
+#     def __init__(self):
+#         print("Инициализатор класса C")
+#
+#
+# class D(B, C):
+#     def __init__(self):
+#         print("Инициализатор класса D")
+#
+#
+# d = D()
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# class Styles:
+#     def __init__(self, color="red", width=1):
+#         print("Инициализатор Styles")
+#         self._color = color
+#         self._width = width
+#
+#
+# class Pos:
+#     def __init__(self, sp: Point, ep: Point):
+#         self._sp = sp
+#         self._ep = ep
+#
+#
+# class Line(Pos, Styles):
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# l1 = Line()
+
+
+# Миксины
+
+# class Goods:
+#     def __init__(self, name, weight, price):
+#         super().__init__()
+#         self.name = name
+#         self.weight = weight
+#         self.price = price
+#
+#     def print_info(self):
+#         print(f"{self.name}, {self.weight}, {self.price}")
+#
+#
+# class MixinLog:
+#     ID = 0
+#
+#     def __init__(self):
+#         MixinLog.ID += 1
+#         self.id = self.ID
+#
+#     def save_sell_log(self):
+#         print(f"{self.id}: товар был продан в 00:00 часов")
+#
+#
+# class Notebook(Goods, MixinLog):
+#     pass
+#
+#
+# n = Notebook("HP", 1.5, 35000)
+# n.print_info()
+# n.save_sell_log()
+
+
+# Перегрузка оператора
+
+# class Clock:
+#     __Day = 86400  # число секунд в дне
+#
+#     def __init__(self, sec: int):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__Day
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+
+#
+# c1 = Clock(100)
+# print(c1.get_format_time())
+# from random import choice, randint
+#
+#
+# class Cat:
+#     def __init__(self, name, age, pol):
+#         self.name = name
+#         self.age = age
+#         self.pol = pol
+#
+#     def __str__(self):
+#         if self.pol == "M":
+#             return f"{self.name} is good boy"
+#         elif self.pol == "F":
+#             return f"{self.name} is good girl"
+#
+#     def __repr__(self):
+#         return f"Cat(name='{self.name}', age={self.age}, pol='{self.pol}')"
+#
+#     def __add__(self, other):
+#         return [Cat("No name", 0, choice(["M", "F"])) for _ in range(randint(1, 5))]
+#
+#
+# cat1 = Cat("Tom", 4, "M")
+# cat2 = Cat("Else", 5, "F")
+# cat3 = Cat("Murzik", 3, "M")
+# print(cat1)
+# print(cat2)
+# print(cat1 + cat2)
+
+
+# class Student:
+#     def __init__(self, name, *args):
+#         self.name = name
+#         self.marks = args
+#
+#
+# s1 = Student("Сергей", 5, 5, 3, 4, 5)
+# print(s1.marks[2])
+
+
+# class Clock:
+#     __Day = 86400  # число секунд в дне
+#
+#     def __init__(self, sec: int):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__Day
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     def __getitem__(self, item):
+#         if not isinstance(item, str):
+#             raise ValueError("Ключ должен быть строкой")
+#         if item == "hour":
+#             return (self.sec // 3600) % 24
+#         if item == "min":
+#             return self.sec // 60 % 60
+#         if item == "sec":
+#             return self.sec % 60
+#
+#
+# c1 = Clock(80000)
+# print(c1.get_format_time())
+#
+# print(c1["hour"], c1["min"], c1["sec"])
+
+
+# class Rectangle:
+#     def __init__(self, w, h):
+#         self.w = w
+#         self.h = h
+#
+#     def get_perimeter(self):
+#         return 2 * (self.w + self.h)
+#
+#
+# class Square:
+#     def __init__(self, a):
+#         self.a = a
+#
+#     def get_perimeter(self):
+#         return 4 * self.a
+#
+#
+# class Triangle:
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def get_perimeter(self):
+#         return self.a + self.b + self.c
+#
+#
+# r1 = Rectangle(1, 2)
+# r2 = Rectangle(3, 4)
+#
+# s1 = Square(10)
+# s2 = Square(20)
+#
+# t1 = Triangle(1, 2, 3)
+# t2 = Triangle(4, 5, 6)
+#
+# shape = [r1, r2, s1, s2, t1, t2]
+#
+# for g in shape:
+#     print(g.get_perimeter())
+
+
+# Функторы
+
+# class Counter:
+#     def __init__(self):
+#         self.__count = 0
+#
+#     def __call__(self, *args, **kwargs):
+#         self.__count += 1
+#         print(self.__count)
+#
+#
+# c1 = Counter()
+# c1()
+# c1()
+# c1()
+
+
+def string_strip(chars):
+    def wrap(string):
+        if not isinstance(string, str):
+            raise ValueError("Аргумент должен быть строкой")
+        return string.strip(chars)
+
+    return wrap
+
+
+s1 = string_strip("?:!.; ")
+print(s1(" Hello World! "))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
