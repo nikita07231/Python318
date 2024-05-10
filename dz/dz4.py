@@ -1,24 +1,36 @@
-class Auto:
-    def __init__(self, md, god, pro, mos, color, many):
-        self.md = md
-        self.god = god
-        self.pro = pro
-        self.mos = mos
-        self.color = color
-        self.many = many
+class Figure:
+    def __init__(self, color):
+        self.__color = color
 
-    def print_info(self):
-        print(" Данные автомобиля ".center(40, "*"))
-        print(f"Название модели: {self.md}\nГод выпуска: {self.god}\nПроизводитель: {self.pro}\n"
-              f"Мощность двигателя: {self.mos}\nЦвет машины: {self.color}\nЦена: {self.many}")
-        print("=" * 40)
+    @property
+    def color(self):
+        return self.__color
 
-    def set_name(self, md):
-        self.md = md
-
-    def get_name(self):
-        return self.md
+    @color.setter
+    def color(self, c):
+        self.__color = c
 
 
-a = Auto("X7 M50i", 2021, "BMW", "530 л. с.", "white", 10790000)
-a.print_info()
+class Rectangle(Figure):
+    def __init__(self, width, height, color):
+        self.width = width
+        self.__height = height
+        super().__init__(color)
+
+    @property
+    def width(self):
+        return self.__width
+
+    @width.setter
+    def width(self, value):
+        if value < 0:
+            raise ValueError("Значение должно быть больше нуля")
+        self.__width = value
+
+    def area(self):
+        print(f"Прямоугольник {self.color}. Площадь: ", end="")
+        return self.__width * self.__height
+
+
+rect = Rectangle(10, 20, "green")
+print(rect.area())

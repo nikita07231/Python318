@@ -1,13 +1,24 @@
-import os
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.note = self.Notebook()
 
-dir_name = "nested1"
+    def show(self):
+        print(self.name, end="")
+        self.note.show()
 
-objs = os.listdir(dir_name)
-print(objs)
+    class Notebook:
+        def __init__(self):
+            self.brand = "HP"
+            self.cpu = "i7"
+            self.ram = 16
 
-for obj in objs:
-    p = os.path.join(dir_name, obj)
-    if os.path.isfile(p):
-        print(f"{obj} - file - {os.path.getsize(p)} bytes")
-    elif os.path.isdir(p):
-        print(f"{obj} - dir")
+        def show(self):
+            print(f" => {self.brand}, {self.cpu}, {self.ram}")
+
+
+s1 = Student("Roman")
+s2 = Student("Vladimir")
+
+s1.show()
+s2.show()
