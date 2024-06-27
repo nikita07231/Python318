@@ -1,26 +1,32 @@
-import math
+import json
+from random import choice
 
 
-class Area:
-    @staticmethod
-    def triangle_area_1(a, b, c):
-        p = (a + b + c) / 2
-        return math.sqrt(p * (p - a) * (p - b) * (p - c))
-
-    @staticmethod
-    def triangle_area_2(a, h):
-        return 0.5 * a * h
-
-    @staticmethod
-    def square_area(a):
-        return a ** 2
-
-    @staticmethod
-    def rect_area(a, b):
-        return a * b
+def gen_person():
+    name = ''
+    tel = ""
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'e', 'f', 'g']
+    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+    while len(name) != 7:
+        name += choice(letters)
+    while len(name) != 7:
+        name += choice(letters)
+    person = {
+        'name': name,
+        'tel': tel
+    }
+    return person, tel
 
 
-print(f"Площадь треугольника по формуле Герона: {Area.triangle_area_1(3, 4, 5)}")
-print(f"Площадь треугольника через основание и высоту: {Area.triangle_area_2(6, 7)}")
-print(f"Площадь квадрата: {Area.square_area(7)}")
-print(f"Площадь прямоугольника: {Area.rect_area(2, 6)}")
+def write_json(person_dict, num):
+    try:
+        data = json.load(open("persons1.json"))
+    except FileNotFoundError:
+        data = {}
+    data[num] = person_dict
+    with open('persons1.json', "w") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+for i in range(5):
+    write_json(gen_person()[0], gen_person()[1])
