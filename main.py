@@ -1,6 +1,6 @@
 # name = "Nikolay"
 # print("Hello,", name, "!")
-
+# import curses.ascii
 # a = 30
 # b = "Hello"
 # c = 2.8
@@ -2674,8 +2674,8 @@
 # print(line, "Строки в документе")
 # f.close()
 
-import os
-import os.path
+# import os
+# import os.path
 
 # import main
 
@@ -3948,7 +3948,7 @@ import os.path
 
 
 # Создание модулей
-import rect
+# import rect
 # class Rectangle:
 #     def __init__(self, w, h):
 #         self.w = w
@@ -4275,7 +4275,7 @@ import rect
 #     json.dump(filtered, f, indent=2)
 
 
-import csv
+# import csv
 
 # with open("data.csv") as f:
 #     file_reader = csv.reader(f, delimiter=";")
@@ -4449,49 +4449,501 @@ import csv
 #     main()
 
 
-import requests
-from bs4 import BeautifulSoup
-import re
-import csv
+# import requests
+# from bs4 import BeautifulSoup
+# import re
+# import csv
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refined(s):
+#     res = re.sub(r"\D+", "", s)
+#     return res
+#
+#
+# def write_csv(data):
+#     with open("plugins.csv", "a") as f:
+#         writer = csv.writer(f, lineterminator="\r", delimiter=";")
+#         writer.writerow((data['name'], data['url'], data['rating']))
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find_all("section", class_="plugin-section")[1]
+#     plugins = p1.find_all("div", class_="entry")
+#
+#     for plugin in plugins:
+#         name = plugin.find("h3").text
+#         url = plugin.find("h3").find("a").get("href")
+#         rating = plugin.find("span", class_="rating-count").text
+#         r = refined(rating)
+#         data = {'name': name, "url": url, 'rating': r}
+#         write_csv(data)
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/plugins/"
+#     get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
-def get_html(url):
-    r = requests.get(url)
-    return r.text
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refine_cy(s):
+#     return s.split()[-1]
+#
+#
+# def write_csv(data):
+#     with open("plugins1.csv", "a") as f:
+#         writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#         writer.writerow((data['name'], data["url"], data['active'], data["cy"]))
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     elements = soup.find_all("div", class_="plugin-card")
+#     for el in elements:
+#         try:
+#             name = el.find("h3", class_="entry-title").text
+#         except AttributeError:
+#             name = ""
+#
+#         try:
+#             url = el.find("h3", class_="entry-title").find('a')["href"]
+#         except AttributeError:
+#             url = ""
+#
+#         try:
+#             active = el.find("span", class_="active-installs").text.strip()
+#         except AttributeError:
+#             active = ""
+#
+#         try:
+#             c = el.find("span", class_="tested-with").text.strip()
+#             cy = refine_cy(c)
+#         except AttributeError:
+#             cy = ""
+#
+#         data = {
+#             'name': name,
+#             'url': url,
+#             'active': active,
+#             'cy': cy
+#         }
+#         write_csv(data)
+#
+#
+# def main():
+#     for i in range(2, 3):
+#         url = f"https://ru.wordpress.org/plugins/browse/blocks/page/{i}/"
+#         get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+# from parsers import Parser
+#
+#
+# def main():
+#     pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
-def refined(s):
-    res = re.sub(r"\D+", "", s)
-    return res
+# import sqlite3
 
 
-def write_csv(data):
-    with open("plugins.csv", "a") as f:
-        writer = csv.writer(f, lineterminator="\r", delimiter=";")
-        writer.writerow((data['name'], data['url'], data['rating']))
+# con = sqlite3.connect("profile.db")
+# cur = con.cursor()
+#
+#
+# cur.execute("""
+# """)
+#
+# con.close()
 
 
-def get_data(html):
-    soup = BeautifulSoup(html, "lxml")
-    p1 = soup.find_all("section", class_="plugin-section")[1]
-    plugins = p1.find_all("div", class_="entry")
+# with sqlite3.connect("profile.db") as con:
+#     cur = con.cursor()
+#
+#     cur.execute("""CREATE TABLE IF NOT EXISTS users(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     summa REAL,
+#     data BLOB)""")
+#
+#     cur.execute("DROP TABLE users")
+#
+#
+# import sqlite3
+#
+#
+# with sqlite3.connect("users.db") as con:
+#     cur = con.cursor()
+#
+#     cur.execute("""CREATE TABLE IF NOT EXISTS person(
+#     id INTEGER PRIMARY KEY AUTOINCREMENT,
+#     name TEXT NOT NULL,
+#     phone BLOB NOT NULL DEFAULT "+79090000000",
+#     age INTEGER CHECK(age > 0 AND age < 100),
+#     email TEXT UNIQUE
+#     )""")
+#
+#     переименовать таблицу
+#     cur.execute("""
+#     ALTER TABLE person
+#     RENAME TO person_table;
+#     """)
+#
+#     добавить поле в таблицу
+#     cur.execute("""
+#         ALTER TABLE person_table
+#         ADD COLUMN address
+#         """)
+#
+#     удалить столбец
+#     cur.execute("""
+#         ALTER TABLE person_table
+#         DROP COLUMN address
+#         """)
 
-    for plugin in plugins:
-        name = plugin.find("h3").text
-        url = plugin.find("h3").find("a").get("href")
-        rating = plugin.find("span", class_="rating-count").text
-        r = refined(rating)
-        data = {'name': name, "url": url, 'rating': r}
-        write_csv(data)
+
+# import sqlite3
+#
+#
+# with sqlite3.connect("db_3.db") as con:
+#     cur = con.cursor()
+#
+#     cur.execute("""
+#     SELECT *
+#     FROM T1
+#     LIMIT 2, 5
+#     """)
+#
+#     for i in cur:
+#         print(i)
+#
+#     res = cur.fetchone()
+#     print(res)
+#
+#     res2 = cur.fetchmany(2)
+#     print(res2)
+#
+#     res3 = cur.fetchall()
+#     print(res3)
+
+#
+# import sqlite3
+#
+# cars_list = [
+#     ('BMW', 54000),
+#     ('Chevrolet', 46000),
+#     ('Daewoo', 36000),
+#     ('Citroen', 29000),
+#     ('Honda', 33000)
+# ]
+#
+# with sqlite3.connect("car.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS cars(
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#     )
+#     """)
+#
+#     # cur.executemany("INSERT INTO cars VALUES(NULL, ?, ?)", cars_list)
+#
+#     cur.executescript("""
+#     DELETE FROM cars WHERE model LIKE 'B%';
+#     UPDATE cars SET price = price + 100;
+#     """)
+#
+#     for car in cars_list:
+#         cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
+#
+#     cur.execute("INSERT INTO cars VALUES(1, 'Renault', 22000)")
+#     cur.execute("INSERT INTO cars VALUES(2, 'Volvo', 29000)")
+#     cur.execute("INSERT INTO cars VALUES(3, 'Mercedes', 57000)")
+#     cur.execute("INSERT INTO cars VALUES(4, 'Bentley', 35000)")
+#     cur.execute("INSERT INTO cars VALUES(5, 'Audi', 52000)")
 
 
-def main():
-    url = "https://ru.wordpress.org/plugins/"
-    get_data(get_html(url))
+# import sqlite3
+#
+# con = None
+# try:
+#     con = sqlite3.connect("car.db")
+#     cur = con.cursor()
+#     cur.executescript("""
+#         CREATE TABLE IF NOT EXISTS cars(
+#             car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#             model TEXT,
+#             price INTEGER
+#         );
+#         BEGIN;
+#         INSERT INTO cars VALUES(NULL, 'Renault', 22000);
+#         UPDATE cars SET price = price + 100;
+#         """)
+#     con.commit()
+# except sqlite3.Error as e:
+#     if con:
+#         con.rollback()
+#     print("Ошибка выполнения запроса")
+# finally:
+#     if con:
+#         con.close()
 
 
-if __name__ == '__main__':
-    main()
+# import sqlite3
+#
+#
+# with sqlite3.connect("car.db") as con:
+#     con.row_factory = sqlite3.Row
+#     cur = con.cursor()
+#     cur.executescript("""
+#     CREATE TABLE IF NOT EXISTS cars(
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#     );
+#     CREATE TABLE IF NOT EXISTS cost(
+#         name TEXT, tr_in INTEGER, buy INTEGER
+#     );
+#     """)
+#
+#     # cur.execute("INSERT INTO cars VALUES(NULL, 'Запорожец', 1000)")
+#     # last_row_id = cur.lastrowid
+#     # buy_car_id = 2
+#     # cur.execute("INSERT INTO cost VALUES('Илья', ?, ?)", (last_row_id, buy_car_id))
+#
+#     cur.execute("SELECT model, price FROM cars")
+#
+#     rows = cur.fetchone()
+#     print(rows)
+#
+#     rows1 = cur.fetchmany(5)
+#     print(rows1)
+#
+#     rows2 = cur.fetchall()
+#     print(rows2)
+#
+#     for res in cur:
+#         print(res[0], "->", res[1])
+#
+# import sqlite3
+#
+#
+# def write_ava(name, data):
+#     try:
+#         with open(name, "wb") as f:
+#             f.write(data)
+#     except IOError as e:
+#         print(e)
+#
+#
+# def read_ava(n):
+#     try:
+#         with open(f"avatars/{n}.png", "rb") as f:
+#             return f.read()
+#     except IOError as e:
+#         print(e)
+#         return False
+#
+#
+# with sqlite3.connect("car.db") as con:
+#     con.row_factory = sqlite3.Row
+#     cur = con.cursor()
+#
+#     cur.executescript("""
+#     CREATE TABLE IF NOT EXISTS users(
+#         name TEXT,
+#         ava BLOB,
+#         score INTEGER
+#     )
+#     """)
+#
+#     # img = read_ava(1)
+#     # if img:
+#     #     binary = sqlite3.Binary(img)
+#     #     cur.execute("INSERT INTO users VALUES('Илья', ?, 1000)", (binary,))
+#
+#     cur.execute("SELECT ava FROM users")
+#     img = cur.fetchone()['ava']
+#
+#     write_ava("out.png", img)
+
+
+# import sqlite3
+
+
+# with sqlite3.connect("car.db") as con:
+#     cur = con.cursor()
+#
+#     with open("sql_dump.sql", "w") as f:
+#         for sql in con.iterdump():
+#             f.write(sql)
+
+
+# with sqlite3.connect("car_project.db") as con:
+#     cur = con.cursor()
+#
+#     with open("sql_dump.sql", "r") as f:
+#         sql = f.read()
+#         cur.executescript(sql)
+
+
+# import os
+#
+# from models.database import DATABASE_NAME, Session
+# import create_database as db_creator
+#
+# from models.lesson import Lesson, association_table
+# from models.student import Student
+# from models.group import Group
+#
+#
+# if __name__ == "__main__":
+#     db_is_created = os.path.exists(DATABASE_NAME)
+#     if not db_is_created:
+#         db_creator.create_database()
+#
+#     session = Session()
+#     print(session.query(Lesson).all())
+#     print("*" * 60)
+
+
+#  Шаблонизатор (Jinja)
+
+# from jinja2 import Template
+
+# # name = "Игорь"
+# # age = 25
+# per = {'name': 'Игорь',
+#        'age': 25}
+#
+# tm = Template("Мне {{ p['age'] }} лет. Меня зовут {{ p.name }}.")
+#
+# msg = tm.render(p=per)
+# # msg = tm.render(n=name, a=age)
+# print(msg)
+
+
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# per = Person("Игорь", 25)
+
+# tm = Template("Мне {{ p['age'] }} лет. Меня зовут {{ p.get_name() }}.")
+#
+# msg = tm.render(p=per)
+#
+# print(msg)
+
+# cities = [
+#     {'id': 1, 'city': 'Москва'},
+#     {'id': 2, 'city': 'Сочи'},
+#     {'id': 3, 'city': 'Минск'},
+#     {'id': 4, 'city': 'Ярославль'},
+#     {'id': 5, 'city': 'Смоленск'}
+# ]
+#
+# link = """<select name="cities">
+# {% for c in cities %}
+# {% if c.id > 3 %}
+#     <option value="{{ c['id'] }}">{{ c['city'] }}</option>
+# {% endif %}
+# {% endfor %}
+# </select>
+# """
+#
+# tm = Template(link)
+# msg = tm.render(cities=cities)
+#
+# print(msg)
+
+
+# cars = [
+#     {'model': 'Audi', 'price': 23000},
+#     {'model': 'Skoda', 'price': 17300},
+#     {'model': 'Renault', 'price': 44300},
+#     {'model': 'Wolksvagen', 'price': 21300}
+# ]
+#
+# # tpl = "Сумма: {{ cs | sum(attribute='price') }}"
+# # tpl = "{{ cs | max(attribute='price') }}"
+# # tpl = "{{ (cs | min(attribute='price')).model }}"
+# # tpl = "{{ cs | random }}"
+# tpl = "{{ cs | replace('model', 'brand') }}"
+# tm = Template(tpl)
+# msg = tm.render(cs=cars)
+#
+# print(msg)
+
+# Макроопределение
+
+# html = """
+# {% macro input_func(name, value, type="text", size=40) %}
+#     <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
+# {% endmacro %}
+#
+# <p>{{ input_func('name', 'Введите имя') }}</p>
+# <p>{{ input_func('psw', 'Пароль', 'password') }}</p>
+# <p>{{ input_func('email', 'Электронная почта', 'email') }}</p>
+# """
+#
+# tm = Template(html)
+# msg = tm.render()
+#
+# print(msg)
+
+
+from jinja2 import Environment, FileSystemLoader
+
+persons = [
+    {"name": "Алексей", "year": 18, "weight": 78.5},
+    {"name": "Никита", "year": 28, "weight": 82.3},
+    {"name": "Виталий", "year": 33, "weight": 94.0}
+]
+
+
+file_loader = FileSystemLoader('templates')
+env = Environment(loader=file_loader)
+
+tm = env.get_template('about.html')
+msg = tm.render(users=persons, title="About Jinja")
+
+print(msg)
+
+
+
+
+
 
 
 
