@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+
+<h1>Pricing</h1>
+
+<ul class="pr">
+    {% for c in curs %}
+        <li class="block">
+            <p class="title">
+                {{ c.title }}
+            </p>
+            <div class="annonce">
+                <p class="price">{{c.price}} руб/мес</p>
+                <p class="text">{{ c.text }}</p>
+                <p class="button"><button>Купить</button></p>
+            </div>
+
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

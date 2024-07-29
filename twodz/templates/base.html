@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        {% block title %}
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>Каталог курсов</title>
+        {% endif %}
+    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% block content %}
+    <ul class="menu">
+        <li><a href="/">Каталог курсов</a></li>
+        <li><a href="/add_curs">Добавить курс</a></li>
+        <li><a href="/info">Информация</a></li>
+    </ul>
+    {% endblock %}
+
+</body>
+</html>

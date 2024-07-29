@@ -3,6 +3,6 @@ from .models import Blog
 
 
 def blogs(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.order_by('-date')
     return render(request, 'blog/blogs.html', {'blogs': blogs})
 
